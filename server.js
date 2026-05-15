@@ -23,10 +23,10 @@ app.use('/api/orders', require('./routes/orders'));
 app.get('/api/health', (req, res) => res.json({ status: 'OK', timestamp: new Date() }));
 
 // Serve frontend in production
-if (process.env.NODE_ENV === 'production') {
+
   app.use(express.static(path.join(__dirname)));
   app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
-}
+
 
 // Error handler
 app.use((err, req, res, next) => {
