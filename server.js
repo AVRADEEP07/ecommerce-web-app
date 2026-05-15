@@ -25,7 +25,7 @@ app.get('/api/health', (req, res) => res.json({ status: 'OK', timestamp: new Dat
 // Serve frontend in production
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname)));
-  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'index.html')));
+  app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 }
 
 // Error handler
