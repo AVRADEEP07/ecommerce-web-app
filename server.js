@@ -33,6 +33,14 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ success: false, message: 'Internal Server Error' });
 });
+app.get('/debug', (req, res) => {
+  const fs = require('fs');
+  res.json({
+    dirname: __dirname,
+    files: fs.readdirSync(__dirname),
+    indexExists: fs.existsSync(__dirname + '/index.html')
+  });
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
