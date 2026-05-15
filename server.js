@@ -25,7 +25,7 @@ app.get('/api/health', (req, res) => res.json({ status: 'OK', timestamp: new Dat
 // Serve frontend in production
 
   app.use(express.static((__dirname)));
-  app.get('(.*)', (req, res) =>{ res.sendFile(path.resolve(__dirname, 'dist', 'index.html'))});
+  app.get('/{*path}', (req, res) =>{ res.sendFile(path.resolve(__dirname, 'dist', 'index.html'))});
 
 
 // Error handler
